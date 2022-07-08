@@ -1,0 +1,65 @@
+
+
+ul.latest-cards-styles {
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 3rem;
+    justify-content: center;
+}
+
+ul.latest-cards-styles li article.latestPosts-card-style {
+    background-color: ivory;
+    padding: 0.75rem;
+    width: 20rem;
+    border-radius: 25px;
+    display: flex;
+    flex-direction: column;
+}
+section.homePage-latestPosts-styles h2 {
+    margin: 3rem 0 2rem 1rem;
+    font-family: var(--fontStyleMainH);
+    
+}
+
+ul.homePage-cards-styles li article.card-style img {
+    margin: 1rem 0;
+    max-width: 100%;
+    object-fit: cover;
+}
+
+h3.locationCardName {
+    margin: 0.25rem 0;
+}
+
+p.locationCard {
+    margin: 0.20rem 0;
+}
+
+p.locationCard:last-of-type {
+    align-self: flex-end;
+    font-size: smaller;
+    color: darkgrey;
+    font-style: italic;
+}
+
+p.locationCardText {
+    margin: 0.25rem 0 0.1rem 0;
+    max-width: 20rem;
+    text-align: justify;
+    text-justify: distribute;
+}
+
+button.delete-button-style {
+    background-color:firebrick;
+    padding: 0.25rem;
+    margin: 1.5rem;
+    width: fit-content;
+    align-self: center;
+}
+
+p.noLatestPosts {
+    font-family: var(--fontStyleMainH);
+    text-align: center;
+}

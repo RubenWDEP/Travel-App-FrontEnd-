@@ -1,0 +1,63 @@
+@import url('https://fonts.googleapis.com/css2?family=Sniglet:wght@800&display=swap');
+
+
+.login-page-style {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.log-h {
+    margin-top: 3rem;
+    font-family: var(--fontStyleMainH);
+}
+
+.log-form {
+    width: 25rem;
+    background-color: ivory;
+    margin-top: 3rem;
+    padding: 2rem;
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+}
+
+.log-form input {
+    margin-bottom: 0.75rem;
+    width: 15rem;
+}
+
+.log-form label {
+    margin-bottom: 0.25rem;
+}
+
+.log-form button {
+    width: 7rem;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+}
+
+.log-form p:last-child {
+    max-width: 16rem;
+} 
+
+p.successLoginMessage {
+    color:forestgreen;
+    font-family: var(--fontStylePublishMessages);
+    font-size: large;
+    text-shadow: 0 0 2px darkgreen;
+    
+}
+p.errorLoginMessage {
+    color:red;
+    font-family: 'Permanent Marker', cursive;
+    font-size: large;
+    text-shadow: 0 0 2px darkred;
+    
+}
+
+

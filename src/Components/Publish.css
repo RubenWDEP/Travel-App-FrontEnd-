@@ -1,0 +1,78 @@
+.publish-page-style {
+    width: 100vw;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.pub-h {
+    margin-top: 3rem;
+    font-family: var(--fontStyleMainH);
+}
+
+form.pub-form {
+    max-width: 25rem;
+    background-color: ivory;
+    margin-top: 3rem;
+    padding: 1rem;
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+}
+
+label.publishCardLabel {
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+}
+
+input.publishCardInput {
+    margin-bottom: 1rem;
+    width: 15rem;
+}
+textarea.publishCardInput {
+    margin-bottom: 1rem;
+    max-width: 18rem;
+}
+
+select.publishCardInput {
+    margin-bottom: 1rem;
+    width: 15rem;
+}
+
+.pub-form button {
+    width: 7rem;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+}
+
+.pub-form-text-style {
+    max-width: 16rem;
+    height: 5rem;
+}
+
+.pub-form p:last-child {
+    max-width: 16rem;
+}
+
+textarea {
+    resize: none;
+}
+
+p.successPublishMessage {
+    color:forestgreen;
+    font-family: var(--fontStylePublishMessages);
+    font-size: large;
+    text-shadow: 0 0 2px darkgreen;
+    
+}
+p.errorPostMessage {
+    color:red;
+    font-family: 'Permanent Marker', cursive;
+    font-size: large;
+    text-shadow: 0 0 2px darkred;
+    
+}

@@ -1,0 +1,97 @@
+section.searchLocationCard{
+    flex: 1;
+    
+}
+
+ul.searchLocationCardList {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 3rem;
+}
+
+
+ul.searchLocationCardList li article.card-style {
+    background-color: ivory;
+    padding: 0.75rem;
+    max-width: 40rem;
+    border-radius: 25px;
+    display: grid;
+    grid-template-columns: repeat(1fr, 1fr);
+    grid-template-areas: 
+        "Titulo Rating"
+        "Categoria Rating"
+        "Lugar Rating"
+        "Entradilla Rating"
+        "img img"
+        "body body"
+        "Publicado Publicado"
+        "Votos Votos";
+    
+}
+h3.searchLocationCardName {
+    grid-area: Titulo;
+    margin: 0.25rem 0;
+}
+
+p.searchLocationCardCategory {
+    grid-area: Categoria;
+    margin: 0.20rem 0;
+}
+p.searchLocationCardPlace {
+    grid-area: Lugar;
+    margin: 0.20rem 0;
+}
+p.searchLocationCardIntro {
+    grid-area: Entradilla;
+    margin: 0.20rem 0;
+}
+
+ul.searchLocationCardList li article.card-style img {
+    grid-area: img;
+    margin: 1rem 0;
+    max-width: 100%;
+    object-fit: cover;
+}
+
+p.searchLocationCardPosted {
+    grid-area: Publicado;
+    justify-self: flex-end;
+    font-size: smaller;
+    color: darkgrey;
+    font-style: italic;
+}
+
+p.searchLocationCardText {
+    grid-area: body;
+    margin: 0.25rem 0 0.25rem 0;
+    max-width: 40rem;
+    text-align: justify;
+    text-justify: distribute;
+}
+
+section.rating-stars-style {
+    grid-area: Rating;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+ul.stars-style li{
+    grid-area: Votos;
+    list-style: none;
+    
+    
+}
+
+ul.count-style li {
+    grid-area: Votos;
+    position: relative;
+    right: 10rem;
+    list-style: none;
+    font-weight: bold;
+    margin: 0.09rem;
+    
+}

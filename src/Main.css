@@ -1,0 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Sniglet:wght@800&display=swap');
+
+
+div.main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+}
+
+
+div.main section p.mainMessage-style {
+    margin: 10rem 0;
+    font-family: var(--fontStyleMainH);
+    font-size:x-large;
+}

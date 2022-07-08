@@ -1,0 +1,45 @@
+
+.rating-stars-style {
+    width: fit-content;
+    justify-self: center;
+    align-self: center;
+    /* display: grid;
+    grid-template-columns: repeat(1fr, 1fr);
+    grid-gap: 10px;
+    grid-template-areas: 
+        "titulo titulo"
+        "rating rating"
+        "stars count"; */
+    /* display: flex;
+    flex-direction: column;
+    align-items: flex-start; */
+}
+
+.rating-stars-style h4{
+    
+}
+
+
+/* .rating-style {
+    grid-area: rating; 
+    justify-self: center;
+} */
+
+/* .ul.stars-style {
+     grid-area: stars; 
+    vertical-align: center;
+} */
+
+/* .rating-stars-style ul.count-style li {
+    grid-area: count;
+    margin: 0.25rem;
+    vertical-align: center;
+    position: relative;
+    top: -5px;
+}
+
+.rating-stars-style ul li {
+    list-style: none;
+    
+} */
+
