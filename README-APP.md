@@ -3,7 +3,7 @@
 First of all, please refer to `README.md` for options to run this app.
 Once user opens the app, the landing page shows a header which has several links, a search bar and a footer.
 
-### "Header"
+### Header
 
 The header has a logo on the left that leads user to landing page if clicked on. The name of the app is showed in the middle of the header and there are several links on the right.
 “Search bar”, “Log in” and “Register” If user navigate as non-logged in. Otherwise, if user is registered and logged in, an extra link called “Home” will appear. Non-logged in users can search recommendations and read their comments, while logged in users can post recommendations as well.
