@@ -5,7 +5,7 @@
     margin: 2rem 0;
     padding: 1rem;
     border-radius: 50px;
-    box-shadow: 0 0 15px darkgrey;
+    box-shadow: 0 0 15px var(--colorShadows);
 }
 
 
@@ -14,6 +14,7 @@ form.style-search-form label span{
 }
 select.selectCategory{
     margin-right: 0.75rem;
+    cursor: pointer;
 }
 
 label.search-box {
@@ -22,13 +23,29 @@ label.search-box {
 }
 
 input.search-box {
-    width: 50vw;
+    width: 20vw;
     height: 23px;
     vertical-align: middle;
 }
 
 .magnifying-glass {
-    width: 16px;
+    width: 18px;
     vertical-align: middle;
     cursor: pointer;
+}
+
+@media (max-width: 660px) {
+    .div-searchBox {
+        margin: 2rem 1.5rem;
+    }
+}
+
+@media (max-width: 590px) {
+    .div-searchBox {
+        min-width: 290px;
+        max-width: 19.5rem;
+    }
+    .search-box {
+        width: max-content;    
+    }
 }

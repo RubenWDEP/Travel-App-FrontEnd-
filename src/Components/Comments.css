@@ -1,0 +1,34 @@
+div.commentBox {
+    background-color: white;
+    border: 2px solid gainsboro;
+    position: relative;
+    right: 5em;
+    width: 120%;
+    height: 8rem;
+    overflow-y: scroll;
+}
+
+div.commentBoxHeader {
+    display: flex;
+    flex-direction: row;
+}
+
+h5.commentTitle {
+    margin-bottom: 1em;
+}
+
+p.comment {
+    margin-bottom: 0.5rem;
+    font-size: small;
+}
+
+p.create_by {
+    font-weight: bold;
+    font-size: small;
+    margin-bottom: 0.2em;
+}
+
+div.commentBoxHeader button {
+    margin-left: 1em;
+    height: fit-content;
+}

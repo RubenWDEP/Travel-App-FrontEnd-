@@ -6,10 +6,10 @@ function Footer (){
     return(
         <footer>
             <p>
-            Final Project
+            Travel Social Network
             </p>
             <p>
-            ©Rubén ©Carlos, 2022 
+            ©Rubén Castro, Junio 2022 
             </p>
         </footer>
     );

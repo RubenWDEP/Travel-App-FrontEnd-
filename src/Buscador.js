@@ -1,72 +1,85 @@
-import { useState } from 'react'
-import { useNavigate } from 'react-router-dom';
-import { countVotes, getUserRating } from './AuxFunction/auxOps';
+import { useState, useMemo, useCallback } from 'react'
+import { countVotes, getUserRating, preSearch } from './AuxFunction/auxOps';
 import './Buscador.css'
 import { useToken } from './Context/loginContext';
 import iconoLupa from './img/iconoLupa.png'
 
 
-function Buscador ({setCard, setCardId, setFailSearch, setVotes}) {
-    const [value, setValue] = useState();
-    const [idArrayGlobalVotes, setIdArrayGlobalVotes] = useState();
+function Buscador({ setCard, setCardId, setFailSearch, setVotes, setPreSearchResponse, searchBar, setSearchBar, value, setValue, setClosePreSearchWindow, setOrder }) {
     const [criteria, setfilterCriteria] = useState();
-    const [searchBar, setSearchBar] = useState();
-    const navigate = useNavigate();
-
-    const [user,setUser, token, setToken, logout, id, setID] = useToken();
+    const [user, setUser, token, setToken, logout, id, setID] = useToken();
     const userData = JSON.parse(localStorage.getItem("user"))
-    
+
+
+    const handlePreSearch = async e => {
+        setValue(e.target.value)
+        setSearchBar(e.target.value);
+        if (userData && e.target.value.length > 0 && e.target.value !== null && e.target.value.startsWith(" ") !== true && criteria === "lugar") {
+            const preSearchRequestValue = await preSearch(token, e.target.value);
+            console.log(preSearchRequestValue)
+            if (preSearchRequestValue.res) {
+                setPreSearchResponse(preSearchRequestValue.results);
+                setClosePreSearchWindow(false);
+            }
+
+
+
+        } else {
+            console.log("No ha hecho handlepresearch");
+            setPreSearchResponse(null);
+            setClosePreSearchWindow(true);
+        }
+    }
+
+
     const handleClick = async e => {
         e.preventDefault();
-        console.log(criteria);
+        setOrder(false);
         try {
-                const params = new URLSearchParams({criteria, searchBar}).toString()
-                const response = await fetch(`${process.env.REACT_APP_API}/getrecommendations?${params}`);
-                const apiRes = await response.json();
-                apiRes.res = response.ok;
-                console.log("hola");
-                if(response.ok) {
-                    console.log(apiRes);
-                    setCard(apiRes.results);
-                } else {
-                    throw new Error(apiRes.message)
+            setVotes(null);
+            const params = new URLSearchParams({ criteria, searchBar }).toString()
+            const response = await fetch(`${process.env.REACT_APP_API}/getrecommendations?${params}`);
+            const apiRes = await response.json();
+            apiRes.res = response.ok;
+
+            if (response.ok) {
+                setCard(apiRes.results);
+            } else {
+                throw new Error(apiRes.message)
+            }
+
+            let cardIdResults = [];
+            if (userData) {
+                for (let i = 0; i < apiRes.results.length; i++) {
+                    cardIdResults.push(apiRes.results[i].id_rec);
                 }
-                
-                let cardIdResults = [];
-                if (userData) {
+
+                const resUserRatingTable = await getUserRating(token);
+                console.log(resUserRatingTable.data);
+                const resUserRatingTableFiltered = resUserRatingTable.data.filter((rec) => cardIdResults.includes(rec.id_user_rating));
+                setCardId(resUserRatingTableFiltered)
+
+                if (apiRes) {
                     for (let i = 0; i < apiRes.results.length; i++) {
-                        cardIdResults.push(apiRes.results[i].id_rec);
-                    }
-                    setIdArrayGlobalVotes(cardIdResults);
-                    console.log("Esto es cardidresults del buble:", cardIdResults);
-                    console.log("Esto es idArrayGlobalVotes:", idArrayGlobalVotes);
-                    
-                    const resUserRatingTable = await getUserRating(token);
-                    console.log(resUserRatingTable.data);
-                    const resUserRatingTableFiltered = resUserRatingTable.data.filter((rec)=> cardIdResults.includes(rec.id_user_rating));
-                    console.log("Esto es resUserRatingTableFiltered en buscador:", resUserRatingTableFiltered);
-                    setCardId(resUserRatingTableFiltered)
-    
-                    if (apiRes) {
-                        for (let i = 0; i < apiRes.results.length; i++) {
-                            for (let y = 0; y < resUserRatingTableFiltered.length; y++){
-    
-                                if (apiRes.results[i].id_rec === resUserRatingTableFiltered[y].id_user_rating) {   
-                                    apiRes.results[i].id_user_rating = resUserRatingTableFiltered[y].votevalue
-                                };
+                        for (let y = 0; y < resUserRatingTableFiltered.length; y++) {
+
+                            if (apiRes.results[i].id_rec === resUserRatingTableFiltered[y].id_user_rating) {
+                                apiRes.results[i].id_user_rating = resUserRatingTableFiltered[y].votevalue
                             };
                         };
                     };
-                } else {
-                    for (let i = 0; i < apiRes.results.length; i++) {
-                        cardIdResults.push(apiRes.results[i].id_rec);
-                    }
-                    setIdArrayGlobalVotes(cardIdResults);
                 }
-
-                const globalVotes = await countVotes(cardIdResults);
-                setVotes(globalVotes.results);
-                console.log("EStos es votes", globalVotes.results);         
+                console.log("Esto apires en buscador:", apiRes.results);
+            } else {
+                for (let i = 0; i < apiRes.results.length; i++) {
+                    cardIdResults.push(apiRes.results[i].id_rec);
+                }
+                console.log("Esto apires en buscador:", apiRes.results);
+            }
+            console.log("Esto apires.result fuera del if en buscador:", apiRes.results);
+            const globalVotes = await countVotes(cardIdResults);
+            setVotes(globalVotes.results);
+            console.log("Estos es votes despues de setvotes", globalVotes.results);
 
         } catch (error) {
             console.error(error);
@@ -75,7 +88,7 @@ function Buscador ({setCard, setCardId, setFailSearch, setVotes}) {
             setCard(null);
         }
 
-    }
+    };
 
 
     let placeHolder;
@@ -86,16 +99,16 @@ function Buscador ({setCard, setCardId, setFailSearch, setVotes}) {
         case "categoría":
             placeHolder = "Evento, Playa, Montaña, Relax o Ciudad"
             break;
-    
+
         default:
             break;
     }
 
-    return(
+    return (
         <div className='div-searchBox'>
             <form className='style-search-form' onSubmit={handleClick}>
                 <label>
-                    <span>Busca un lugar por</span> 
+                    <span>Busca un lugar por</span>
                     <select className='selectCategory' name="criteria" value={criteria} id="criteria" onChange={e => setfilterCriteria(e.target.value)}>
                         <option>...</option>
                         <option value="lugar">Lugar</option>
@@ -103,9 +116,18 @@ function Buscador ({setCard, setCardId, setFailSearch, setVotes}) {
                     </select>
                 </label>
                 <label className="search-box" htmlFor="searchbox">Buscar</label>
-                <input className="search-box" placeholder={placeHolder} name="searchbox" id="searchbox" value={value} onChange={(e)=>setSearchBar(e.target.value)}></input>
+                {criteria === "lugar" && <input className="search-box" placeholder={placeHolder} name="searchbox" id="searchbox" value={value ? value : ""} onChange={handlePreSearch}></input>}
+                {criteria === "categoría" &&
+                    <select className="category-search-box" name="searchbox" id="searchbox" onChange={handlePreSearch}>
+                        <option>Selecciona una categoría</option>
+                        <option value="evento">Eventos</option>
+                        <option value="playa">Playa</option>
+                        <option value="montaña">Montaña</option>
+                        <option value="ciudad">Ciudad</option>
+                        <option value="relax">Relax</option>
+                    </select>}
                 <button>
-                    <img className='magnifying-glass' src={iconoLupa} alt="Lupa"/>
+                    <img className='magnifying-glass' src={iconoLupa} alt="Lupa" />
                 </button>
             </form>
         </div>
@@ -114,4 +136,4 @@ function Buscador ({setCard, setCardId, setFailSearch, setVotes}) {
     );
 }
 
-export default Buscador
+export default Buscador;

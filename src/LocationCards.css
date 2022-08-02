@@ -11,12 +11,22 @@ ul.searchLocationCardList {
     gap: 3rem;
 }
 
+label.sortResults {
+    margin-right: 0.5rem;
+    font-weight: bold;
+}
+.sortResults {
+    margin-bottom: 1rem;
+    cursor: pointer;
+}
+
 
 ul.searchLocationCardList li article.card-style {
     background-color: ivory;
     padding: 0.75rem;
     max-width: 40rem;
     border-radius: 25px;
+    box-shadow: 0 0 15px var(--colorShadows);
     display: grid;
     grid-template-columns: repeat(1fr, 1fr);
     grid-template-areas: 
@@ -26,10 +36,12 @@ ul.searchLocationCardList li article.card-style {
         "Entradilla Rating"
         "img img"
         "body body"
-        "Publicado Publicado"
-        "Votos Votos";
+        "Publicado Publicado";
     
 }
+
+
+
 h3.searchLocationCardName {
     grid-area: Titulo;
     margin: 0.25rem 0;
@@ -59,6 +71,7 @@ p.searchLocationCardPosted {
     grid-area: Publicado;
     justify-self: flex-end;
     font-size: smaller;
+    margin: 1em 0 1em 0;
     color: darkgrey;
     font-style: italic;
 }
@@ -79,19 +92,74 @@ section.rating-stars-style {
     align-items: center;
 }
 
-ul.stars-style li{
-    grid-area: Votos;
-    list-style: none;
-    
-    
-}
-
 ul.count-style li {
-    grid-area: Votos;
-    position: relative;
-    right: 10rem;
+    
     list-style: none;
     font-weight: bold;
     margin: 0.09rem;
-    
+    color: darkgoldenrod;
+}
+
+
+ul.count-style li span.fivestars {
+    margin: 15px;
+    vertical-align: top;
+    color: black;
+}
+ul.count-style li span.fourstars {
+    margin-left: 35px;
+    vertical-align: top;
+    color: black;
+}
+ul.count-style li span.threestars {
+    margin-left: 55px;
+    vertical-align: top;
+    color: black;
+}
+ul.count-style li span.twostars {
+    margin-left: 75px;
+    vertical-align: top;
+    color: black;
+}
+ul.count-style li span.onestars {
+    margin-left: 95px;
+    vertical-align: top;
+    color: black;
+}
+
+
+
+@media (max-width: 660px) {
+    ul.searchLocationCardList li article.card-style {
+        margin: 0 1.5rem;   
+    }
+
+    label.sortResults {
+        margin-left: 1.5rem;
+    }
+}
+@media (max-width: 426px) {
+
+    select.sortResults {
+        margin-left: 1.5rem;
+    }
+}
+
+@media (max-width: 370px) {
+
+    ul.count-style li span.fivestars {
+        right: 1px;
+    }
+    ul.count-style li span.fourstars {
+        margin-left: 10px;
+    }
+    ul.count-style li span.threestars {
+        margin-left: 30px;
+    }
+    ul.count-style li span.twostars {
+        margin-left: 50px;
+    }
+    ul.count-style li span.onestars {
+        margin-left: 70px;
+    }
 }

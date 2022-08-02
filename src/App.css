@@ -3,6 +3,11 @@
 html {
   --fontStyleMainH: 'Sniglet', cursive;
   --fontStylePublishMessages: 'Permanent Marker', cursive;
+  --colorBackgroundHeader: orange;
+  --colorBackgroundMenuBurguerHeader: rgb(215, 145, 17);
+  --colorHeaderH1: blue;
+  --colorShadows: rgb(75,75,75);
+
 }
 
 *{

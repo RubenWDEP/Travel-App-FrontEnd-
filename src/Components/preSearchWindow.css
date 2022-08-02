@@ -1,0 +1,14 @@
+ul.preSearch-style{
+    background-color: white;
+    padding: 0.5em 0 1em 0.2em;
+    width: 35vw;
+    position: relative;
+    left: 8rem;
+    top: -3rem;
+    border-radius: 0.5rem;
+}
+
+ul.preSearch-style li {
+    list-style: none;
+    cursor: pointer;
+}

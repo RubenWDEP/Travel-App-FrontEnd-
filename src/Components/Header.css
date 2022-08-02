@@ -1,8 +1,4 @@
-html {
-    --colorBackgroundHeader: orange;
-    --colorBackgroundMenuBurguerHeader: rgb(215, 145, 17);
-    --colorHeaderH1: blue;
-}
+
 
 .header {
     background-color: var(--colorBackgroundHeader);
@@ -60,9 +56,6 @@ li.userName {
 }
 a:hover {
     color:lightseagreen;
-}
-a:active {
-    color:green;
 }
 
 img.menuHeader {
