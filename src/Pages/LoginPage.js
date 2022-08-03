@@ -16,17 +16,6 @@ function Login() {
     const [successRegisterMessage, setSuccessRegisterMessage] = useState(false);
     const navigate = useNavigate();
 
-    /* const ShowSuccessRegisterMessage = ()=>{
-        
-        useEffect(()=>{
-            const showMessage = setTimeout(() => {
-                setSuccessRegisterMessage(true) 
-            }, 2000);
-            return () => clearTimeout(showMessage);
-        }, [setSuccessRegister])
-        return successRegisterMessage ? navigate("/home"):"";
-    }   */
-
     const handleSubmit = async (e) => {
         e.preventDefault();
         setError(null);
@@ -48,9 +37,6 @@ function Login() {
             } else {
                 e.target.reset();
             }
-
-
-            // ShowSuccessRegisterMessage();
 
 
         } catch (error) {
