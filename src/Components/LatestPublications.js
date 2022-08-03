@@ -10,9 +10,7 @@ function LatestPublications({ recs, setRecs }) {
 
     const handleDelete = async (e) => {
         try {
-            console.log("he hecho click", e.target.value)
             const deleteAction = await deletepost(token, e.target.value);
-            console.log(deleteAction.updateResults);
             setRecs(deleteAction.updateResults)
         } catch (error) {
             console.error(error.message);

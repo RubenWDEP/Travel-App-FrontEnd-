@@ -17,7 +17,7 @@ function Comments({ width, id_rec }) {
     };
 
     useEffect(() => {
-        console.log("Valor de reFetch", reFetch)
+
         async function cardComments(id_rec) {
             const getCardComments = await getUserComments(id_rec);
             setCom(getCardComments.results);

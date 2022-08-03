@@ -43,7 +43,6 @@ function Login() {
                 setSuccessRegister("Usuario identificado correctamente");
                 setSuccessRegisterMessage(true);
                 setTimeout(() => {
-                    console.log("Esto es el delay")
                     navigate("/home");
                 }, 2000);
             } else {

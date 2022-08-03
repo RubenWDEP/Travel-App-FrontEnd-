@@ -12,9 +12,6 @@ function LocationCards({ card, votes, order, setOrder }) {
     const [voteResultsOrder, setVoteResultsOrder] = useState();
     const [width, setWidth] = useState();
 
-
-
-
     useEffect(() => {
         setCardResultsOrder(cardResults);
         setVoteResultsOrder(voteResults);
@@ -31,7 +28,6 @@ function LocationCards({ card, votes, order, setOrder }) {
     const handleOrder = (e) => {
         e.preventDefault();
         if (!order) {
-            console.log("Solo ejecuto esto una vez");
             for (let i = 0; i < voteResults.length; i++) {
                 const weightedAverage = ((voteResultsOrder[i].resultUno) * 5 + (voteResultsOrder[i].resultDos) * 10 + (voteResultsOrder[i].resultTres) * 20 + (voteResultsOrder[i].resultCuatro) * 25 + (voteResultsOrder[i].resultCinco) * 40) / (100);
 
@@ -40,7 +36,6 @@ function LocationCards({ card, votes, order, setOrder }) {
             }
         }
         setOrder(true);
-        console.log(voteResults);
 
         if (e.target.value === "masMenos") {
             const cardResultsMayorMenor = [...cardResults].sort(deMayorAMenor);
@@ -53,8 +48,7 @@ function LocationCards({ card, votes, order, setOrder }) {
             const voteResultsMenorMayor = [...voteResults].sort(deMenorAMayor);
             setCardResultsOrder(cardResultsMenorMayor);
             setVoteResultsOrder(voteResultsMenorMayor);
-            console.log(cardResultsMenorMayor);
-            console.log(voteResultsMenorMayor);
+
         }
         if (e.target.value === "recientes") {
             const cardResultsMayorMenorId = [...cardResults].sort(deMayorAMenorId);
@@ -79,11 +73,7 @@ function LocationCards({ card, votes, order, setOrder }) {
 
                     <ul className="searchLocationCardList">
                         {cardResultsOrder.map((result, index) => {
-                            console.log('-----')
-                            console.log('result', result);
-                            console.log('index', index);
-                            console.log('voteresultorder', voteResultsOrder);
-                            console.log("Esto es cardResultsOrder", cardResultsOrder)
+
                             return <li key={index}>
                                 <article className='card-style'>
                                     <h3 className='searchLocationCardName'>{result.titulo}</h3>

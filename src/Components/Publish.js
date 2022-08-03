@@ -12,7 +12,7 @@ function Publish({ setRecs }) {
     const [user, setUser, token, setToken, logout, id, setID] = useToken();
     const [succesPublish, setSuccesPublish] = useState();
     const create_byOnLocalStorage = JSON.parse(localStorage.getItem("user"));
-    console.log(create_byOnLocalStorage.email);
+
 
 
 

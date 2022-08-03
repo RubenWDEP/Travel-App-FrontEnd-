@@ -16,7 +16,6 @@ function Buscador({ setCard, setCardId, setFailSearch, setVotes, setPreSearchRes
         setSearchBar(e.target.value);
         if (userData && e.target.value.length > 0 && e.target.value !== null && e.target.value.startsWith(" ") !== true && criteria === "lugar") {
             const preSearchRequestValue = await preSearch(token, e.target.value);
-            console.log(preSearchRequestValue)
             if (preSearchRequestValue.res) {
                 setPreSearchResponse(preSearchRequestValue.results);
                 setClosePreSearchWindow(false);
@@ -25,7 +24,6 @@ function Buscador({ setCard, setCardId, setFailSearch, setVotes, setPreSearchRes
 
 
         } else {
-            console.log("No ha hecho handlepresearch");
             setPreSearchResponse(null);
             setClosePreSearchWindow(true);
         }
@@ -55,7 +53,6 @@ function Buscador({ setCard, setCardId, setFailSearch, setVotes, setPreSearchRes
                 }
 
                 const resUserRatingTable = await getUserRating(token);
-                console.log(resUserRatingTable.data);
                 const resUserRatingTableFiltered = resUserRatingTable.data.filter((rec) => cardIdResults.includes(rec.id_user_rating));
                 setCardId(resUserRatingTableFiltered)
 
@@ -69,17 +66,17 @@ function Buscador({ setCard, setCardId, setFailSearch, setVotes, setPreSearchRes
                         };
                     };
                 }
-                console.log("Esto apires en buscador:", apiRes.results);
+
             } else {
                 for (let i = 0; i < apiRes.results.length; i++) {
                     cardIdResults.push(apiRes.results[i].id_rec);
                 }
-                console.log("Esto apires en buscador:", apiRes.results);
+
             }
-            console.log("Esto apires.result fuera del if en buscador:", apiRes.results);
+
             const globalVotes = await countVotes(cardIdResults);
             setVotes(globalVotes.results);
-            console.log("Estos es votes despues de setvotes", globalVotes.results);
+
 
         } catch (error) {
             console.error(error);

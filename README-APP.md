@@ -1,7 +1,10 @@
 # App Front-end documentation
 
 First of all, please refer to `README.md` for options to run this app.
-Once user opens the app, the landing page shows a header which has several links, a search bar and a footer.
+
+## Overview
+
+Once user opens the app, the landing page shows a header which has several links, a search bar and a footer. This app is a Travel Social Network where users can share their travelling experiences. Users can read posts of other users, or post recommendations including name, location, a picture, text, comments and even they can vote.
 
 ### Header
 
